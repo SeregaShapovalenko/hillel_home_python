@@ -10,5 +10,5 @@ elif len(lst) % 2 != 0:
     lst_two = lst [:length_lst]
     lst_end = lst_one, lst_two
     print(list(lst_end))
-elif len(lst) == 0:
+else:
     lst_end = lst * 2
