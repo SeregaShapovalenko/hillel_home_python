@@ -4,6 +4,6 @@ for elem in lst.copy():
     if elem == 0:
         lst.remove(elem)
         lst_zero.append(0)
-lst_new = lst + lst_zero
-print(lst_new)
+lst.extend(lst_zero)
+print(lst)
 
