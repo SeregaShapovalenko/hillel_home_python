@@ -1,11 +1,23 @@
+import keyword
+import string
 user_str = input("Введите строку: ")
-not_symbols = "!#$%&'()*+,-./:;<=>?@[\\]^`{|}~ "
-not_words = ["False", "None", "True", "and", "as", "assert", "async", "await", "break", "class", "continue", "def", "del", "elif", "else", "except", "finally", "for", "from", "global", "if", "import", "in", "is", "lambda", "nonlocal", "not", "or", "pass", "raise", "return", "try", "while", "with", "yield"]
-if (not user_str.isidentifier()
-    or "__" in user_str
-    or user_str[0] in not_symbols
-    or user_str[0] in not_words
-    or any(elem.isupper() for elem in user_str)):
-    print(False)
+valid = True
+if not user_str or user_str[0].isdigit():
+    valid = False
 else:
-    print(True)
+    if user_str in keyword.kwlist:
+        valid = False
+    elif "__" in user_str:
+        valid = False
+    else:
+        for elem in user_str:
+            if elem.isupper():
+                valid = False
+                break
+            if elem.isspace():
+                valid = False
+                break
+            if elem in string.punctuation and elem != '_':
+                valid = False
+                break
+print(valid)
